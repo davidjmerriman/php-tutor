@@ -1,0 +1,78 @@
+body, div, h1 {
+	margin: 0;
+	padding: 0;
+}
+
+body {
+	overflow: hidden;
+	position: absolute;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	right: 0;
+}
+
+.title {
+	background-color: #141414;
+	color: #fff;
+}
+
+h1 {
+	text-align: center;
+}
+
+.main {
+	display: relative;
+	height: 100%;
+}
+
+.col {
+	display: inline-block;
+	vertical-align: top;
+	margin-right: -4px;
+	height: 100%;
+}
+
+.left {
+	position: relative;
+	width: 25%;
+}
+
+.middle {
+	position: relative;
+	width: 40%;
+}
+
+#editor {
+	position: absolute;
+	top: 0;
+	bottom: 100px;
+	left: 0;
+	right: 0;
+}
+
+.ace_scrollbar {
+	display: none !important;
+}
+
+.submitter {
+	position: absolute;
+	background-color: #141414;
+	height: 100px;
+	left: 0;
+	right: 0;
+	bottom: 0;
+}
+
+.right {
+	position: relative;
+	width: 35%;
+}
+
+.input {
+	height: 50%;
+}
+
+.output {
+	height: 50%;
+}
