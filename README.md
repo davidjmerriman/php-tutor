@@ -1,4 +1,4 @@
 PHP Tutor
 =========
 
-[[Lesson Data Format]]
+[Lesson Data Format](lesson_data_format)
