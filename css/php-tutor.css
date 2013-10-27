@@ -106,15 +106,15 @@ a {
 	margin-bottom: 12px;
 }
 
-/* Styles for lessons
-body {
+/* Styles for lessons */
+/*body {
 	overflow: hidden;
 	position: absolute;
 	top: 0;
 	left: 0;
 	bottom: 0;
 	right: 0;
-}
+}*/
 
 .title {
 	background-color: #141414;
@@ -179,4 +179,4 @@ h1 {
 
 .output {
 	height: 50%;
-}*/
+}

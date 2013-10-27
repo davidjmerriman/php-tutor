@@ -3,6 +3,7 @@
 	<head>
 		<meta charset="utf-8" />
 		<link rel="stylesheet" type="text/css" href="css/php-tutor.css">
+		<script src="lib/ace-builds/src-min-noconflict/ace.js" type="text/javascript" charset="utf-8"></script>
 		<script src="lib/jquery/jquery.min.js"></script>
 	</head>
 	<body>
@@ -38,15 +39,6 @@
 				</section>
 			</main>
 		</article>
-		<script>
-			$(document).ready( function() {
-				$('nav li').mouseenter( function(e) {
-					$('nav li').removeClass('selected');
-					$(this).addClass('selected');
-					$('.desc').fadeOut(100);
-					$('.desc.' + $(this).attr('id')).delay(100).fadeIn(100);
-				});
-			});
-		</script>
+		<script src="js/php-tutor.js"></script>
 	</body>
 </html>

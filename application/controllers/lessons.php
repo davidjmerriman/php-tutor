@@ -9,7 +9,7 @@ class Lessons extends CI_Controller {
 	}
 
 	public function view($lesson) {
-		echo "View $lesson";
+		$this->load->view('view_lesson.php');
 	}
 
 	public function test($lesson) {
