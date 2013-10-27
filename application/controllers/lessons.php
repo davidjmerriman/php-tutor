@@ -5,7 +5,7 @@ class Lessons extends CI_Controller {
 	public function index() {
 		$data['lessons'] = json_decode(file_get_contents('./lessons/lessons.json'), true);
 
-		$this->load->view('lessons.php', $data);
+		$this->load->view('view_lessons.php', $data);
 	}
 
 	public function view($lesson) {
