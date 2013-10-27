@@ -1,8 +1,48 @@
-body, div, h1 {
-	margin: 0;
-	padding: 0;
+/* Eric Meyer's Reset CSS v2.0 - http://cssreset.com */
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,canvas,details,embed,figure,figcaption,footer,header,hgroup,menu,nav,output,ruby,section,summary,time,mark,audio,video{border:0;font-size:100%;font:inherit;vertical-align:baseline;margin:0;padding:0}article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section{display:block}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:none}table{border-collapse:collapse;border-spacing:0}
+
+/* Styles for lesson list */
+a {
+	text-decoration: none;
 }
 
+.lessons article {
+	padding: 50px;
+	height: 100%;
+	background-color: #99f;
+}
+
+.lessons header {
+	height: 100px;
+	line-height: 100px;
+	background-color: #9f9;
+	margin-bottom: 50px;
+}
+
+.lessons header h1 {
+	font-size: 32px;
+}
+
+span.term {
+	vertical-align: top;
+	display: inline-block;
+	width: 20%;
+	padding-bottom: 25px;
+	border-bottom: 5px solid #000;
+	background-color: #fff;
+	color: #000;
+}
+
+p.definition {
+	vertical-align: top;
+	display: inline-block;
+	width: 79%;
+	padding-bottom: 25px;
+	background-color: #000;
+	color: #fff;
+}
+
+/* Styles for lessons */
 body {
 	overflow: hidden;
 	position: absolute;
