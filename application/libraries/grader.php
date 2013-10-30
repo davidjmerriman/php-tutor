@@ -13,7 +13,7 @@ class Grader {
 
 	private function checkSyntax( $code ) {
 		// Generate temporary filename
-		$filename = tempnam("/tmp", "temp") . "php";
+		$filename = tempnam("/tmp", "temp") . ".php";
 
 		// Write code to file for syntax check
 		$file = fopen( $filename, 'w' );
@@ -23,7 +23,7 @@ class Grader {
 		// Check syntax
 		$output = exec( "php -l $filename 2>&1", $errorList );
 
-		//unlink($filename);
+		unlink($filename);
 
 		if( "No syntax errors detected in $filename" == $output ) {
 			return false;
