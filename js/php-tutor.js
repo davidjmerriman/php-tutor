@@ -1,23 +1,21 @@
-
-
-$('#submitter').submit( function(e) {
-	e.preventDefault();
-	$.ajax({
-		url: 'http://davidmerriman.net/grader/grader.php',
-		method: 'post',
-		data: 'code=' + encodeURI( editor.getValue() ),
-		dataType: 'json',
-		success: function( data ) {
-			alert(JSON.stringify(data));
-		}
-	});
-} );
-
 $(document).ready( function() {
 	if( 0 < $('#editor').size() ) {
 		var editor = ace.edit("editor");
 		editor.setTheme("ace/theme/twilight");
 		editor.getSession().setMode("ace/mode/php");
+
+		$('#submitter').submit( function(e) {
+			e.preventDefault();
+			$.ajax({
+				url: '../test/hello',
+				method: 'post',
+				data: 'code=' + encodeURI( editor.getValue() ),
+				dataType: 'html',
+				success: function( data ) {
+					$('.output').html(data);
+				}
+			});
+		} );
 	}
 
 	$('nav li').mouseenter( function(e) {

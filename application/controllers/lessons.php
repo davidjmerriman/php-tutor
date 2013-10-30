@@ -17,8 +17,11 @@ class Lessons extends CI_Controller {
 	}
 
 	public function test($lesson) {
-		// TODO: load lesson data, evaluate against submitted input, return output
-		echo "Test $lesson";
+		$this->load->library('Grader');
+
+		// TODO: check code against function whitelist!!!
+
+		echo $this->grader->test( $_POST['code'], null );
 	}
 
 	public function grade($lesson) {
