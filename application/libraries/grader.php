@@ -24,8 +24,32 @@ class Grader {
 		return array( 'time' => $this->m_fltElapsedTime, 'output' => $this->m_strOutput );
 	}
 
-	public function grade( $code, $dataSet ) {
+	public function grade( $code, $dataSets ) {
+		$arrmixResults = array();
 
+		// Check syntax
+		$syntaxErrors = $this->checkSyntax( $code );
+
+		// TODO: check style as well
+
+		if ( !empty( $syntaxErrors ) ) {
+			$this->m_strOutput = $syntaxErrors;
+			$this->m_intGrade = 0;
+		} else {
+			$intCorrect = 0;
+			$intTotal = 0;
+			foreach( $dataSets as $dataSet ) {
+				$intTotal++;
+				$this->runCodeAgainstInput( $code, $dataSet['input'], $dataSet['timeLimit'] );
+				if( $dataSet['expectedOutput'] == $this->m_strOutput ) {
+					$intCorrect++;
+				}
+			}
+			$this->m_intGrade = round( $intCorrect / $intTotal * 100 );
+		}
+
+		$arrmixResults['grade'] = $this->m_intGrade;
+		return $arrmixResults;
 	}
 
 	private function checkSyntax( $code ) {

@@ -25,6 +25,7 @@
 					<div class="submitter">
 						<form id="submitter" method="POST" action="grader.php">
 							<button type="button" id="test">Test</button>
+							<button type="button" id="grade">Grade</button>
 						</form>
 					</div>
 				</div>
