@@ -4,15 +4,17 @@ $(document).ready( function() {
 		editor.setTheme("ace/theme/twilight");
 		editor.getSession().setMode("ace/mode/php");
 
-		$('#submitter').submit( function(e) {
-			e.preventDefault();
+		$('#test').click( function(e) {
+			// TODO: show overlay
 			$.ajax({
 				url: '../test/hello',
 				method: 'post',
 				data: 'code=' + encodeURI( editor.getValue() ),
-				dataType: 'html',
+				dataType: 'json',
 				success: function( data ) {
-					$('.output').html(data);
+					// TODO: hide overlay
+					$('#outputContainer').html(data.output);
+					$('#executionTime').html(Math.round(data.time * 1000000)/1000000 + ' s');
 				}
 			});
 		} );
