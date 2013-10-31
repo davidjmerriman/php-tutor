@@ -19,7 +19,9 @@ class Lessons extends CI_Controller {
 	public function test($lesson) {
 		$this->load->library('Grader');
 
-		echo json_encode( $this->grader->test( $_POST['code'], null ) );
+		$input = $this->processInput();
+
+		echo json_encode( $this->grader->test( $_POST['code'], $input ) );
 	}
 
 	public function grade($lesson) {
@@ -30,5 +32,25 @@ class Lessons extends CI_Controller {
 
 		// TODO: once we have user profiles, we can log their grades for use
 		//       throughout the system
+	}
+
+	private function processInput() {
+		$___method = $_POST['input']['method'];
+		$___names = $_POST['input']['names'];
+		$___values = $_POST['input']['values'];
+
+		for( $___i = 0; $___i < count( $___names ); $___i++ ) {
+			if( false == empty( $___names[$___i] ) || false == empty( $___values[$___i] ) ) {
+				eval( "\${$___names[$___i]} = {$___values[$___i]};" );
+			}
+		}
+		$___input = array();
+		$___input[$___method] = array();
+		foreach( get_defined_vars() as $varname => $varvalue ) {
+			if( '___' != substr( $varname, 0, 3 ) ) {
+				eval( "\$___input['$___method']['$varname'] = \$$varname;" );
+			}
+		}
+		return $___input;
 	}
 }

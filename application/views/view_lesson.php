@@ -28,9 +28,24 @@
 						</form>
 					</div>
 				</div>
-				<div class="right col">
-					<div class="input">Input</div>
-					<div class="output">
+				<section class="right col">
+					<section class="input">
+						<header>
+							<h1>Input</h1>
+						</header>
+						<form id="inputForm">
+							<section id="inputVariables">
+								<fieldset>
+									<input name="input[method]" type="radio" value="GET" checked>
+									<label>GET</label>
+									<input name="input[method]" type="radio" value="POST">
+									<label>POST</label>
+									<button type="button" id="addVariable">Add Input</button>
+								</fieldset>
+							</section>
+						</form>
+					</section>
+					<section class="output">
 						<header>
 							<h1>Output</h1>
 						</header>
@@ -39,8 +54,8 @@
 						<footer>
 							Execution time: <span id="executionTime">N/A</span>
 						</footer>
-					</div>
-				</div>
+					</section>
+				</section>
 			</main>
 		</article>
 		<script src="../../js/php-tutor.js"></script>

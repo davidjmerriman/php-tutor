@@ -58,20 +58,16 @@ class Grader {
 		// Build getlist
 		$gets = array();
 		if( true == isset( $input['GET'] ) ) {
-			foreach( $input['GET'] as $key => $value ) {
-				$gets[] = "'$key' => '$value'";
-			}
+			$gets = $input['GET'];
 		}
-		$getlist = implode( ", ", $gets );
+		$getlist = var_export( $gets, true );
 
 		// Build getlist
 		$posts = array();
 		if( true == isset( $input['POST'] ) ) {
-			foreach( $input['POST'] as $key => $value ) {
-				$posts[] = "'$key' => '$value'";
-			}
+			$posts = $input['POST'];
 		}
-		$postlist = implode( ", ", $posts );
+		$postlist = var_export( $posts, true );
 
 		// Write code to file for execution
 		$file = fopen($filename, "w");
@@ -80,10 +76,10 @@ class Grader {
 <?php
 	// Set up input arrays to mimic desired GET, POST, COOKIE, etc.
 	unset($_GET);
-	$_GET = array( %s );
+	$_GET = %s;
 
 	unset($_POST);
-	$_POST = array( %s );
+	$_POST = %s;
 
 	// Register shutdown function for error handling
 	function shutdown() {
@@ -133,9 +129,9 @@ CODEBLOCK
 		// Delete file
 		unlink($filename);
 		$jsonOutput = implode("\n", array_filter( $output ) );
-die($jsonOutput);
+
 		// Collect results
-		$data = json_decode( $jsonOutput );
+		$data = json_decode( $jsonOutput, true );
 		$this->m_fltElapsedTime = $data['time'];
 		$this->m_strOutput = $data['output'];
 	}
