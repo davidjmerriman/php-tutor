@@ -30,7 +30,6 @@ $(document).ready( function() {
 				data: 'code=' + encodeURI( editor.getValue() ),
 				dataType: 'json',
 				success: function( data ) {
-					alert(JSON.stringify( data ));
 					$('.score').html(data.grade);
 					$('.breakdown').empty();
 					for( i in data.datasets ) {
