@@ -12,23 +12,23 @@
 				<h1>Hello, World!</h1>
 			</header>
 			<main>
-				<div class="left col">
+				<section class="left col">
 					<h2>Lesson Contents</h2>
 					<p>Contents, yay!</p>
-				</div>
-				<div class="middle col">
+				</section>
+				<section class="middle col">
 					<div id="editor">&lt;?php
 	foreach( $_GET as $key => $value ) {
 		echo "$key, $value!";
 	}
 ?&gt;</div>
-					<div class="submitter">
+					<section class="submitter">
 						<form id="submitter" method="POST" action="grader.php">
 							<button type="button" id="test">Test</button>
 							<button type="button" id="grade">Grade</button>
 						</form>
-					</div>
-				</div>
+					</section>
+				</section>
 				<section class="right col">
 					<section class="input">
 						<header>
@@ -59,6 +59,22 @@
 				</section>
 			</main>
 		</article>
+		<section class="overlay hide">
+			<button class="close-overlay">x</button>
+			<section class="loading hide">Executing your code....Please wait...</section>
+			<section class="grades hide">
+				<header>
+					<h1>Grades</h1>
+				</header>
+				<ul class="report-card">
+					<li>Overall Score: <span class="score"></span></li>
+					<li>Breakdown:
+						<ul class="breakdown">
+						</ul>
+					</li>
+				</ul>
+			</section>
+		</section>
 		<script src="../../js/php-tutor.js"></script>
 	</body>
 </html>

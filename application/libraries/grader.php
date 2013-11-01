@@ -36,14 +36,22 @@ class Grader {
 			$this->m_strOutput = $syntaxErrors;
 			$this->m_intGrade = 0;
 		} else {
+			// Execute code against each dataset
 			$intCorrect = 0;
 			$intTotal = 0;
-			foreach( $dataSets as $dataSet ) {
+			foreach( $dataSets as $name => $dataSet ) {
 				$intTotal++;
 				$this->runCodeAgainstInput( $code, $dataSet['input'], $dataSet['timeLimit'] );
-				if( $dataSet['expectedOutput'] == $this->m_strOutput ) {
+				$boolPass = $dataSet['expectedOutput'] == $this->m_strOutput;
+				if( true == $boolPass ) {
 					$intCorrect++;
 				}
+
+				$arrmixResults['datasets'][] = array( 
+					'name' => $name,
+					'time' => $this->m_fltElapsedTime,
+					'output' => $this->m_strOutput,
+					'pass' => $boolPass );
 			}
 			$this->m_intGrade = round( $intCorrect / $intTotal * 100 );
 		}
@@ -109,7 +117,7 @@ class Grader {
 	function shutdown() {
 		$error=error_get_last();
 		if( false == is_null( $error ) ) {
-			echo($error['message']);
+			echo( json_encode( array( 'output' => $error['message'], 'time' => 0 ) ) );
 		}
 	}
 	register_shutdown_function('shutdown');

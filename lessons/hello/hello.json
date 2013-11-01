@@ -1,0 +1,16 @@
+{
+	"name":"hello",
+	"title":"Hello, World!",
+	"content":[],
+	"code":"/* Write code to print 'Hello, World!' below */",
+	"datasets":{
+		"default":{
+			"timeLimit":1,
+			"input":{
+				"get":{},
+				"post":{}
+			},
+			"expectedOutput":"Hello, World!"
+		}
+	}
+}
