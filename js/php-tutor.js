@@ -1,3 +1,6 @@
+window.currentSlide = 0;
+window.slideCount = window.slides.length;
+
 $(document).ready( function() {
 	if( 0 < $('#editor').size() ) {
 		var editor = ace.edit("editor");
@@ -8,7 +11,7 @@ $(document).ready( function() {
 			$('.loading').show();
 			showOverlay( false );
 			$.ajax({
-				url: '../test/hello',
+				url: '../test/'+window.lessonName,
 				method: 'post',
 				data: 'code=' + encodeURI( editor.getValue() ) + '&' + $('#inputForm').serialize(),
 				dataType: 'json',
@@ -25,7 +28,7 @@ $(document).ready( function() {
 			$('.loading').show();
 			showOverlay( true );
 			$.ajax({
-				url: '../grade/hello',
+				url: '../grade/'+window.lessonName,
 				method: 'post',
 				data: 'code=' + encodeURI( editor.getValue() ),
 				dataType: 'json',
@@ -49,6 +52,21 @@ $(document).ready( function() {
 		$('.close-overlay').click( function(e) {
 			hideOverlay();
 		});
+
+		// Handle slides
+		$('#slideLeft').click( function(e) {
+			moveSlideLeft();
+		});
+
+		$('#slideRight').click( function(e) {
+			moveSlideRight();
+		});
+
+		for( var slide in window.slides ) {
+			$('.left.col').append($('<section class="slide '+(slide==0?'':' hide')+'">').load('../../lessons/'+window.lessonName+'/'+slides[slide]));
+		}
+
+		updateSlideButtonStatus();
 	}
 
 	$(document).on( 'click', '.deleteVariable', function(e) {
@@ -74,5 +92,34 @@ $(document).ready( function() {
 	function hideOverlay() {
 		$('.overlay').fadeOut(250);
 		$('.overlay').children().hide();
+	}
+
+	function moveSlideLeft() {
+		$('.slide').hide();
+		window.currentSlide--;
+		$('.slide').eq(window.currentSlide).show();
+		updateSlideButtonStatus();
+	}
+
+	function moveSlideRight() {
+		$('.slide').hide();
+		window.currentSlide++;
+		$('.slide').eq(window.currentSlide).show();
+		updateSlideButtonStatus();
+
+	}
+
+	function updateSlideButtonStatus() {
+		if( 0 >= window.currentSlide ) {
+			$('#slideLeft').hide();
+		} else {
+			$('#slideLeft').show();
+		}
+
+		if( window.currentSlide >= window.slideCount - 1 ) {
+			$('#slideRight').hide();
+		} else {
+			$('#slideRight').show();
+		}
 	}
 });

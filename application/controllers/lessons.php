@@ -6,14 +6,19 @@ class Lessons extends CI_Controller {
 		// TODO: The code that loads the lessons should be moved to the
 		//       model layer, so we can easily switch to a database at
 		//       some point without changing controller code
-		$data['lessons'] = json_decode(file_get_contents('./lessons/lessons.json'), true);
+		$this->load->model('Lesson_model');
+
+		$data['lessons'] = $this->Lesson_model->fetchLessons();
 
 		$this->load->view('view_lessons.php', $data);
 	}
 
 	public function view($lesson) {
-		// TODO: load lesson data through model layer
-		$this->load->view('view_lesson.php');
+		$this->load->model('Lesson_model');
+
+		$data['lesson'] = $this->Lesson_model->fetchLesson($lesson);
+
+		$this->load->view('view_lesson.php', $data);
 	}
 
 	public function test($lesson) {
@@ -26,11 +31,12 @@ class Lessons extends CI_Controller {
 
 	public function grade($lesson) {
 		$this->load->library('Grader');
+		$this->load->model('Lesson_model');
 
 		// Load lesson data
-		$lesson = json_decode( file_get_contents("./lessons/$lesson/$lesson.json" ), true );
+		$lesson = $this->Lesson_model->fetchLesson($lesson);
 
-		// Evaluate against all datasets, return score and details on which 
+		// Evaluate against all datasets, return score and details on which
 		// datasets passed/failed, execution time per dataset, and other information
 		echo json_encode( $this->grader->grade( $_POST['code'], $lesson['datasets'] ) );
 

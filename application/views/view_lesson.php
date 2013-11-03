@@ -9,19 +9,16 @@
 	<body>
 		<article class="lesson">
 			<header>
-				<h1>Hello, World!</h1>
+				<h1><?=$lesson['title']?></h1>
 			</header>
 			<main>
 				<section class="left col">
-					<h2>Lesson Contents</h2>
-					<p>Contents, yay!</p>
+					<button id="slideLeft">&lt;</button>
+					<button id="slideRight">&gt;</button>
+					<div class="clear"></div>
 				</section>
 				<section class="middle col">
-					<div id="editor">&lt;?php
-	foreach( $_GET as $key => $value ) {
-		echo "$key, $value!";
-	}
-?&gt;</div>
+					<div id="editor"><?=htmlentities($lesson['code'])?></div>
 					<section class="submitter">
 						<form id="submitter" method="POST" action="grader.php">
 							<button type="button" id="test">Test</button>
@@ -75,6 +72,10 @@
 				</ul>
 			</section>
 		</section>
+		<script>
+			window.lessonName = '<?=$lesson['name']?>';
+			window.slides = ['<?=implode("','", $lesson['content'])?>'];
+		</script>
 		<script src="../../js/php-tutor.js"></script>
 	</body>
 </html>

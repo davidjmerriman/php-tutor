@@ -1,8 +1,8 @@
 {
 	"name":"hello",
 	"title":"Hello, World!",
-	"content":[],
-	"code":"/* Write code to print 'Hello, World!' below */",
+	"content":[ "slide1.html", "slide2.html", "slide3.html" ],
+	"code":"<?php\n\t/* Write code to print 'Hello, World!' below */\n?>",
 	"datasets":{
 		"default":{
 			"timeLimit":1,

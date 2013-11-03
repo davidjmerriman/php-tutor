@@ -151,6 +151,26 @@ h1 {
 	width: 25%;
 }
 
+#slideLeft {
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	background-color: #141414;
+	color: #f90;
+	border: 0;
+	font-weight: 900;
+}
+
+#slideRight {
+	position: absolute;
+	top: 0px;
+	right: 0px;
+	background-color: #141414;
+	color: #f90;
+	border: 0;
+	font-weight: 900;
+}
+
 .middle {
 	position: relative;
 	width: 40%;

@@ -133,9 +133,7 @@ class Grader {
 	ob_start();
 
 	// USER CODE BEGIN
-?>
-%s
-<?php
+?>%s<?php
 	// Remove time limit
 	set_time_limit(0);
 
